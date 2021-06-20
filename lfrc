@@ -1,0 +1,13 @@
+set shell sh
+
+map x $$f
+map X !$f
+
+cmd trash %set -f; mv $fx ~/.trash
+cmd delete ${{
+    set -f
+    printf "$fx\n"
+    printf "delete?[y/n]"
+    read ans
+    [ $ans = "y" ] && rm -rf $fx
+}}
